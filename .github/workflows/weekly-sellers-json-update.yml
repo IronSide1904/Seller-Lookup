@@ -1,0 +1,36 @@
+name: Weekly sellers.json update
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Wednesdays at 03:00 UTC / 06:00 Asia/Jerusalem during daylight saving time.
+    - cron: "0 3 * * 3"
+
+permissions:
+  contents: write
+
+jobs:
+  update-sellers-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Rebuild sellers.json data
+        run: python scripts/update_sellers_json.py
+
+      - name: Commit updated dashboard data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update sellers.json dashboard data"
+          file_pattern: "Seller Lookup & IVT/seller_lookup_dashboard.csv Seller Lookup & IVT/seller_json_fetch_status.csv Seller Lookup & IVT/seller_name_summary.csv Seller Lookup & IVT/seller_id_summary.csv"

@@ -31,6 +31,41 @@ Main file path: app.py
 
 Dependencies are declared in the root `requirements.txt`.
 
+## Weekly sellers.json Updates
+
+The repository includes a GitHub Actions workflow:
+
+```text
+.github/workflows/weekly-sellers-json-update.yml
+```
+
+It runs every Wednesday at `03:00 UTC`, refetches every source listed in:
+
+```text
+Seller Lookup & IVT/seller_json_fetch_status.csv
+```
+
+Then it rebuilds and commits:
+
+```text
+Seller Lookup & IVT/seller_lookup_dashboard.csv
+Seller Lookup & IVT/seller_json_fetch_status.csv
+Seller Lookup & IVT/seller_name_summary.csv
+Seller Lookup & IVT/seller_id_summary.csv
+```
+
+Because Streamlit Cloud deploys from `main`, every automatic commit should trigger a Streamlit redeploy for:
+
+```text
+https://sellerlookup.streamlit.app/
+```
+
+You can also trigger the update manually from GitHub:
+
+```text
+Actions -> Weekly sellers.json update -> Run workflow
+```
+
 ## Included Data
 
 This repository includes the generated dashboard CSV/XLSX inputs needed by `Seller Lookup & IVT/app.py`, plus the sibling `resolved_schain_ivt/ivt_by_seller_domain_under_domain.csv` file expected by the Pre-Bid IVT tab.
