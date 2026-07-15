@@ -7,16 +7,29 @@ Streamlit dashboard for seller lookup, seller-domain IVT, Media-Guard SChain rev
 From the repository root:
 
 ```powershell
-cd "Seller Lookup & IVT"
 pip install -r requirements.txt
-streamlit run app.py --server.address 0.0.0.0 --server.port 8505
+streamlit run app.py
 ```
 
 Open:
 
 ```text
-http://localhost:8505
+http://localhost:8501
 ```
+
+The root `app.py` launches `Seller Lookup & IVT/app.py` so Streamlit Community Cloud can use a simple entrypoint path.
+
+## Streamlit Community Cloud
+
+Use these deployment settings:
+
+```text
+Repository: IronSide1904/Seller-Lookup
+Branch: main
+Main file path: app.py
+```
+
+Dependencies are declared in the root `requirements.txt`.
 
 ## Included Data
 
