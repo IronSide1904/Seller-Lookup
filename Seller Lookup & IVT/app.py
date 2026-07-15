@@ -662,6 +662,73 @@ def render_id_summary_tab(id_summary: pd.DataFrame) -> pd.DataFrame:
     return filtered
 
 
+def render_source_explorer_tab(lookup: pd.DataFrame) -> pd.DataFrame:
+    st.subheader("Source Explorer")
+    st.caption("Inspect every seller row loaded from a specific sellers.json source.")
+
+    c1, c2, c3 = st.columns([2, 1, 1])
+    source_query = c1.text_input(
+        "Source name or sellers.json URL contains",
+        value="lkqd",
+        placeholder="e.g. lkqd, lkqd.net, https://lkqd.com/sellers.json",
+        key="source_explorer_source_query",
+    )
+    seller_id_query = c2.text_input(
+        "Seller ID contains",
+        placeholder="e.g. 476",
+        key="source_explorer_seller_id_query",
+    )
+    seller_domain_query = c3.text_input(
+        "Seller Domain contains",
+        placeholder="e.g. nexstardigital.com",
+        key="source_explorer_seller_domain_query",
+    )
+
+    filtered = lookup.copy()
+    source_term = normalize_text(source_query)
+    if source_term:
+        source_mask = (
+            filtered["_norm_source_name"].str.contains(re.escape(source_term), case=False, na=False)
+            | filtered["_norm_sellers_json_url"].str.contains(re.escape(source_term), case=False, na=False)
+        )
+        filtered = filtered[source_mask]
+    filtered = filter_contains(filtered, "seller_id", seller_id_query)
+    filtered = filter_contains(filtered, "seller_domain", seller_domain_query)
+
+    metric_cols = st.columns(5)
+    metric_cols[0].metric("Rows", f"{len(filtered):,}")
+    metric_cols[1].metric("Unique Seller IDs", f"{filtered['seller_id'].replace('', pd.NA).dropna().nunique():,}")
+    metric_cols[2].metric("Unique Seller Names", f"{filtered['seller_name'].replace('', pd.NA).dropna().nunique():,}")
+    metric_cols[3].metric("Unique Domains", f"{filtered['seller_domain'].replace('', pd.NA).dropna().nunique():,}")
+    metric_cols[4].metric("Sources", f"{filtered['sellers_json_url'].replace('', pd.NA).dropna().nunique():,}")
+
+    columns = [
+        "source_name",
+        "sellers_json_url",
+        "seller_id",
+        "seller_name",
+        "seller_domain",
+        "seller_type",
+        "seller_domain_ivt_pct",
+    ]
+    st.dataframe(
+        filtered[columns],
+        use_container_width=True,
+        hide_index=True,
+        height=650,
+        column_config={
+            "sellers_json_url": st.column_config.LinkColumn("sellers.json URL"),
+            "seller_id": st.column_config.TextColumn("Seller ID"),
+            "seller_name": st.column_config.TextColumn("Seller Name"),
+            "seller_domain": st.column_config.TextColumn("Seller Domain"),
+            "seller_type": st.column_config.TextColumn("Seller Type"),
+            "seller_domain_ivt_pct": st.column_config.TextColumn("Seller Domain IVT %"),
+        },
+    )
+    download_csv(filtered[columns], "filtered_source_explorer.csv", "Download filtered Source Explorer results")
+    return filtered
+
+
 def render_health_tab(health: pd.DataFrame) -> pd.DataFrame:
     st.subheader("Source Health")
     c1, c2, c3, c4 = st.columns(4)
@@ -1067,11 +1134,12 @@ def main() -> None:
     render_kpis(filtered_lookup, health)
     st.divider()
 
-    tab_lookup, tab_name, tab_id, tab_blacklist, tab_mg_ivt_schain, tab_under_domain, tab_health = st.tabs(
+    tab_lookup, tab_name, tab_id, tab_source, tab_blacklist, tab_mg_ivt_schain, tab_under_domain, tab_health = st.tabs(
         [
             "Seller Lookup",
             "Seller Name Summary",
             "Seller ID Summary",
+            "Source Explorer",
             "Seller ID Blacklist",
             "MG IVT - SCHAIN",
             "Pre-Bid IVT",
@@ -1085,6 +1153,8 @@ def main() -> None:
         render_name_summary_tab(name_summary)
     with tab_id:
         render_id_summary_tab(id_summary)
+    with tab_source:
+        render_source_explorer_tab(lookup)
     with tab_blacklist:
         render_seller_id_blacklist_tab(media_guard_summary, media_guard_blacklist)
     with tab_mg_ivt_schain:

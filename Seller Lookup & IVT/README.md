@@ -119,6 +119,17 @@ sum(invalid traffic count) / sum(total requests)
 
 The `MG IVT - SCHAIN` tab displays the source workbook and supports searching by seller name, seller domain, SChain text, or `Relevant Pub ID Before dauup.com`.
 
+## Source Explorer
+
+The `Source Explorer` tab is designed to audit a specific sellers.json source. It defaults to `lkqd` and shows all rows from:
+
+```text
+https://lkqd.net/sellers.json
+https://lkqd.com/sellers.json
+```
+
+Each LKQD source currently contributes `1,519` seller rows and `1,515` unique seller IDs.
+
 ## Share On The Same WiFi
 
 Start the app with:
