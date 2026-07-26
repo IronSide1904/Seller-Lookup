@@ -246,11 +246,21 @@ def add_match_reason(df: pd.DataFrame, terms: list[str], mode: str) -> pd.DataFr
 
     for term in terms:
         term_mask = pd.Series(False, index=result.index)
+        if mode == "Auto":
+            seller_id_mask = match_field(result["_norm_seller_id"], term, exact=True)
+            if seller_id_mask.any():
+                term_mask = seller_id_mask
+                for idx in seller_id_mask[seller_id_mask].index:
+                    row_reasons[idx].add("matched seller ID")
+                keep_mask |= term_mask
+                for idx in term_mask[term_mask].index:
+                    if term not in row_terms[idx]:
+                        row_terms[idx].append(term)
+                continue
+
         for _mode_name, (field, reason) in field_items:
-            exact_id = field == "seller_id" and mode == "Seller ID"
+            exact_id = field == "seller_id"
             field_mask = match_field(result[f"_norm_{field}"], term, exact=exact_id)
-            if mode == "Auto" and field == "seller_id":
-                field_mask |= match_field(result[f"_norm_{field}"], term, exact=True)
             term_mask |= field_mask
             for idx in field_mask[field_mask].index:
                 row_reasons[idx].add(reason)
