@@ -97,6 +97,13 @@ def unique_sorted(values: Iterable[object]) -> list[str]:
     return sorted({str(value).strip() for value in values if str(value).strip()})
 
 
+def normalize_seller_type(value: object) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return ""
+    return text.upper()
+
+
 def as_bool(series: pd.Series) -> pd.Series:
     if series.dtype == bool:
         return series.fillna(False)
@@ -145,6 +152,7 @@ def load_seller_lookup(signature: tuple[float, float]) -> pd.DataFrame:
     for column in LOOKUP_REQUIRED_COLUMNS:
         lookup[column] = lookup[column].fillna("").astype(str)
         lookup[f"_norm_{column}"] = lookup[column].map(normalize_for_search)
+    lookup["_seller_type_filter"] = lookup["seller_type"].map(normalize_seller_type)
     return lookup
 
 
@@ -167,7 +175,7 @@ def load_source_health(signature: tuple[float, float]) -> pd.DataFrame:
 def apply_sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
     st.sidebar.header("Filters")
     source_names = st.sidebar.multiselect("Source name", unique_sorted(df["source_name"]))
-    seller_types = st.sidebar.multiselect("Seller type", unique_sorted(df["seller_type"]))
+    seller_types = st.sidebar.multiselect("Seller type", unique_sorted(df["_seller_type_filter"]))
     seller_domain = st.sidebar.text_input("Seller domain contains", placeholder="e.g. pubmatic.com")
     seller_name = st.sidebar.text_input("Seller name contains", placeholder="e.g. Lacuna")
     seller_id = st.sidebar.text_input("Seller ID exact match", placeholder="e.g. 34167, 34197, 34114")
@@ -176,7 +184,7 @@ def apply_sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
     if source_names:
         filtered = filtered[filtered["source_name"].isin(source_names)]
     if seller_types:
-        filtered = filtered[filtered["seller_type"].isin(seller_types)]
+        filtered = filtered[filtered["_seller_type_filter"].isin(seller_types)]
     for column, value in [
         ("seller_domain", seller_domain),
         ("seller_name", seller_name),
