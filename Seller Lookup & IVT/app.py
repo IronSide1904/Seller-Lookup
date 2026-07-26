@@ -403,20 +403,6 @@ def render_search_tab(lookup: pd.DataFrame) -> None:
     )
     download_csv(filtered[visible_columns], "filtered_seller_results.csv", "Download filtered seller results as CSV")
 
-    advanced_columns = [
-        column
-        for column in filtered.columns
-        if column not in visible_columns and not column.startswith("_")
-    ]
-    if advanced_columns:
-        with st.expander("Advanced columns", expanded=False):
-            st.dataframe(
-                filtered[advanced_columns],
-                use_container_width=True,
-                hide_index=True,
-                height=360,
-            )
-
     st.subheader("Grouped Summaries")
     col_left, col_right = st.columns(2)
     with col_left:
