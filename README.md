@@ -1,6 +1,13 @@
-﻿# Seller-Lookup
+# Seller Lookup
 
-Streamlit dashboard for seller lookup, seller-domain IVT, Media-Guard SChain review, and SChain seller ID blacklist analysis.
+Simple Streamlit search dashboard for existing sellers.json records.
+
+The dashboard is focused on one workflow:
+
+1. Paste seller IDs, seller domains, seller names, source names, or sellers.json URLs.
+2. Choose a search mode when needed.
+3. Review matching seller records.
+4. Download the filtered CSV results.
 
 ## Run
 
@@ -29,7 +36,106 @@ Branch: main
 Main file path: app.py
 ```
 
-Dependencies are declared in the root `requirements.txt`.
+Live app:
+
+```text
+https://sellerlookup.streamlit.app/
+```
+
+Streamlit Community Cloud can hibernate inactive apps. This repository includes a keep-awake workflow, but Streamlit availability can still depend on Streamlit Cloud status, GitHub availability, and account/app limits.
+
+## Search Examples
+
+Single seller ID:
+
+```text
+34167
+```
+
+Multiple seller IDs:
+
+```text
+34167, 34197, 34114
+```
+
+Excel paste:
+
+```text
+34167	34197	34114
+```
+
+Domain search:
+
+```text
+zmaticoo.com
+```
+
+Source search:
+
+```text
+lkqd
+```
+
+Seller name search:
+
+```text
+Lacuna
+```
+
+## Search Modes
+
+`Auto` searches across seller ID, seller name, seller domain, source name, and sellers.json URL.
+
+`Seller ID` mode uses exact seller ID matching after trimming spaces. This is the best mode when pasting a column or row of seller IDs from Excel.
+
+The other modes search one field with case-insensitive contains matching:
+
+- `Seller Name`
+- `Seller Domain`
+- `Source Name`
+- `Sellers.json URL`
+
+Pasted terms can be separated by commas, spaces, new lines, tabs, semicolons, or pipes. Duplicate terms are removed while preserving order.
+
+## Filters And Downloads
+
+The sidebar keeps only simple lookup filters:
+
+- Source name
+- Seller type
+- Seller domain contains
+- Seller name contains
+- Seller ID contains
+
+The Search tab includes:
+
+- Matching seller records
+- Match reason and matched terms
+- Grouped summary by seller ID
+- Grouped summary by seller domain
+- CSV downloads for all filtered outputs
+
+The Source Health tab reads `seller_json_fetch_status.csv`, shows source status KPIs, supports simple status filters, and downloads the filtered health table.
+
+The Data Export tab lists available dashboard CSV files, shows row and column counts, and provides direct CSV download buttons.
+
+## Data Files
+
+Required:
+
+```text
+Seller Lookup & IVT/seller_lookup_dashboard.csv
+Seller Lookup & IVT/seller_json_fetch_status.csv
+```
+
+Optional export files:
+
+```text
+Seller Lookup & IVT/seller_name_summary.csv
+Seller Lookup & IVT/seller_id_summary.csv
+```
+
+The dashboard reads existing CSV files only. It does not refetch sellers.json URLs from the UI.
 
 ## Weekly sellers.json Updates
 
@@ -65,11 +171,3 @@ You can also trigger the update manually from GitHub:
 ```text
 Actions -> Weekly sellers.json update -> Run workflow
 ```
-
-## Included Data
-
-This repository includes the generated dashboard CSV/XLSX inputs needed by `Seller Lookup & IVT/app.py`, plus the sibling `resolved_schain_ivt/ivt_by_seller_domain_under_domain.csv` file expected by the Pre-Bid IVT tab.
-
-## Notes
-
-Large generated data files are committed because this dashboard is designed to run as a self-contained local package.
