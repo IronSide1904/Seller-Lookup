@@ -101,7 +101,10 @@ def normalize_seller_type(value: object) -> str:
     text = str(value or "").strip()
     if not text:
         return ""
-    return text.upper()
+    normalized = text.upper()
+    if normalized == "ONO":
+        return "O&O"
+    return normalized
 
 
 def as_bool(series: pd.Series) -> pd.Series:
