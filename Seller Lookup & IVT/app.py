@@ -170,7 +170,7 @@ def apply_sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
     seller_types = st.sidebar.multiselect("Seller type", unique_sorted(df["seller_type"]))
     seller_domain = st.sidebar.text_input("Seller domain contains", placeholder="e.g. pubmatic.com")
     seller_name = st.sidebar.text_input("Seller name contains", placeholder="e.g. Lacuna")
-    seller_id = st.sidebar.text_input("Seller ID contains", placeholder="e.g. 34167, 34197, 34114")
+    seller_id = st.sidebar.text_input("Seller ID exact match", placeholder="e.g. 34167, 34197, 34114")
 
     filtered = df.copy()
     if source_names:
@@ -180,7 +180,6 @@ def apply_sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
     for column, value in [
         ("seller_domain", seller_domain),
         ("seller_name", seller_name),
-        ("seller_id", seller_id),
     ]:
         terms = parse_search_terms(value)
         if terms:
@@ -194,6 +193,10 @@ def apply_sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
                         na=False,
                     )
             filtered = filtered[mask]
+    seller_id_terms = [normalize_for_search(term) for term in parse_search_terms(seller_id)]
+    seller_id_terms = [term for term in seller_id_terms if term]
+    if seller_id_terms:
+        filtered = filtered[filtered["_norm_seller_id"].isin(set(seller_id_terms))]
     return filtered
 
 

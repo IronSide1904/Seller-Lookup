@@ -105,7 +105,7 @@ The sidebar keeps only simple lookup filters:
 - Seller type
 - Seller domain contains
 - Seller name contains
-- Seller ID contains
+- Seller ID exact match
 
 The Search tab includes:
 
