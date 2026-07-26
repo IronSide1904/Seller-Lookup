@@ -133,9 +133,11 @@ Optional export files:
 ```text
 Seller Lookup & IVT/seller_name_summary.csv
 Seller Lookup & IVT/seller_id_summary.csv
+Seller Lookup & IVT/bsw_supplierinfo.json
 ```
 
 The dashboard reads existing CSV files only. It does not refetch sellers.json URLs from the UI.
+The BSW supplierinfo file is imported as a local `BSW` source during data rebuilds.
 
 ## Weekly sellers.json Updates
 

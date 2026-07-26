@@ -1,0 +1,665 @@
+{
+    "description": "BidSwitch Supply Partner Information",
+    "suppliers": [
+        {
+            "supplier_name": "Magnite DV+ (formerly Rubicon)",
+            "supplier_id": "rubicon",
+            "sellers_json_url": "https://rubiconproject.com/sellers.json"
+        },
+        {
+            "supplier_name": "Yahoo Exchange (formerly Verizon Media Exchange)",
+            "supplier_id": "rmx",
+            "sellers_json_url": ""
+        },
+        {
+            "supplier_name": "YieldLab",
+            "supplier_id": "yieldlab",
+            "sellers_json_url": "http://yieldlab.net/sellers.json"
+        },
+        {
+            "supplier_name": "LiveIntent SSP",
+            "supplier_id": "liveintent",
+            "sellers_json_url": "https://liveintent.com/sellers.json"
+        },
+        {
+            "supplier_name": "OpenX",
+            "supplier_id": "openx",
+            "sellers_json_url": "https://www.openx.com/sellers.json"
+        },
+        {
+            "supplier_name": "Sovrn",
+            "supplier_id": "fmx",
+            "sellers_json_url": "https://lijit.com/sellers.json"
+        },
+        {
+            "supplier_name": "Pubmatic",
+            "supplier_id": "pubmatic",
+            "sellers_json_url": "https://pubmatic.com/sellers.json"
+        },
+        {
+            "supplier_name": "Stroeer SSP",
+            "supplier_id": "adscale",
+            "sellers_json_url": "https://www.stroeer.com/sellers.json"
+        },
+        {
+            "supplier_name": "Pulsepoint",
+            "supplier_id": "pulsepoint",
+            "sellers_json_url": "http://pulsepoint.com/sellers.json"
+        },
+        {
+            "supplier_name": "YieldOne",
+            "supplier_id": "yieldone",
+            "sellers_json_url": "https://impact-ad.jp/sellers.json"
+        },
+        {
+            "supplier_name": "Equativ",
+            "supplier_id": "smartadserver",
+            "sellers_json_url": "https://smartadserver.com/sellers.json"
+        },
+        {
+            "supplier_name": "NexxenXtend",
+            "supplier_id": "adconductor",
+            "sellers_json_url": "https://video.unrulymedia.com/sellers.json"
+        },
+        {
+            "supplier_name": "Between Digital",
+            "supplier_id": "between",
+            "sellers_json_url": "https://betweendigital.com/sellers.json"
+        },
+        {
+            "supplier_name": "Google Ad Exchange",
+            "supplier_id": "google",
+            "sellers_json_url": "https://storage.googleapis.com/adx-rtb-dictionaries/sellers.json"
+        },
+        {
+            "supplier_name": "Smaato",
+            "supplier_id": "smaato",
+            "sellers_json_url": "http://smaato.com/sellers.json"
+        },
+        {
+            "supplier_name": "Digital Turbine (FKA Fyber)",
+            "supplier_id": "inneractive",
+            "sellers_json_url": "https://www.digitalturbine.com/sellers.json"
+        },
+        {
+            "supplier_name": "Improve Digital",
+            "supplier_id": "improve",
+            "sellers_json_url": "https://www.improvedigital.com/sellers.json"
+        },
+        {
+            "supplier_name": "Sonobi",
+            "supplier_id": "sonobi",
+            "sellers_json_url": "https://www.sonobi.com/sellers.json"
+        },
+        {
+            "supplier_name": "Mobfox",
+            "supplier_id": "mobfox",
+            "sellers_json_url": "https://uis.mobfox.com/sellers.json"
+        },
+        {
+            "supplier_name": "Automattic & Tumblr (WordPress)",
+            "supplier_id": "wordpress",
+            "sellers_json_url": ""
+        },
+        {
+            "supplier_name": "Freewheel",
+            "supplier_id": "stickyads",
+            "sellers_json_url": "https://www.freewheel.com/sellers.json"
+        },
+        {
+            "supplier_name": "AdForm",
+            "supplier_id": "adform",
+            "sellers_json_url": "https://adform.com/sellers.json"
+        },
+        {
+            "supplier_name": "TripleLift",
+            "supplier_id": "triplelift",
+            "sellers_json_url": "https://cdn.3lift.com/sellers.json"
+        },
+        {
+            "supplier_name": "Ad Generation",
+            "supplier_id": "scaleout",
+            "sellers_json_url": "https://ad-generation.jp/sellers.json"
+        },
+        {
+            "supplier_name": "Nexxen SSP",
+            "supplier_id": "unrulyx",
+            "sellers_json_url": "https://video.unrulymedia.com/sellers.json"
+        },
+        {
+            "supplier_name": "InMobi Exchange",
+            "supplier_id": "aerserv",
+            "sellers_json_url": "https://www.inmobi.com/sellers.json"
+        },
+        {
+            "supplier_name": "Fluct",
+            "supplier_id": "fluct",
+            "sellers_json_url": "https://adingo.jp/sellers.json"
+        },
+        {
+            "supplier_name": "Sharethrough",
+            "supplier_id": "sharethrough",
+            "sellers_json_url": "https://sharethrough.com/sellers.json"
+        },
+        {
+            "supplier_name": "Teads",
+            "supplier_id": "teads",
+            "sellers_json_url": "https://sellers.teads.tv/sellers.json"
+        },
+        {
+            "supplier_name": "GumGum",
+            "supplier_id": "gumgum2",
+            "sellers_json_url": "https://gumgum.com/sellers.json"
+        },
+        {
+            "supplier_name": "Emodo",
+            "supplier_id": "axonix",
+            "sellers_json_url": "http://axonix.com/sellers.json"
+        },
+        {
+            "supplier_name": "Magnite SpringServe",
+            "supplier_id": "tremor",
+            "sellers_json_url": "http://tremorhub.com/sellers.json"
+        },
+        {
+            "supplier_name": "Beachfront",
+            "supplier_id": "beachfront",
+            "sellers_json_url": "https://www.beachfront.com/sellers.json"
+        },
+        {
+            "supplier_name": "Kargo",
+            "supplier_id": "kargo",
+            "sellers_json_url": "https://storage.cloud.kargo.com/ad/network/iab/sellers.json"
+        },
+        {
+            "supplier_name": "PubNative",
+            "supplier_id": "pubnative",
+            "sellers_json_url": "http://pubnative.net/sellers.json"
+        },
+        {
+            "supplier_name": "TPMN",
+            "supplier_id": "tpmn",
+            "sellers_json_url": "http://tpmn.io/sellers.json"
+        },
+        {
+            "supplier_name": "Gamma",
+            "supplier_id": "ambient",
+            "sellers_json_url": ""
+        },
+        {
+            "supplier_name": "Smaato CTV (formerly LKQD)",
+            "supplier_id": "lkqd",
+            "sellers_json_url": "https://www.lkqd.com/sellers.json"
+        },
+        {
+            "supplier_name": "Third presence",
+            "supplier_id": "thirdpresence",
+            "sellers_json_url": "http://thirdpresence.com/sellers.json"
+        },
+        {
+            "supplier_name": "Vungle, Inc.",
+            "supplier_id": "vungle",
+            "sellers_json_url": "https://vungle.com/sellers.json"
+        },
+        {
+            "supplier_name": "AdStir",
+            "supplier_id": "adstir",
+            "sellers_json_url": "https://ad-stir.com/sellers.json"
+        },
+        {
+            "supplier_name": "Ucfunnel",
+            "supplier_id": "ucfunnel",
+            "sellers_json_url": "http://aralego.com/sellers.json"
+        },
+        {
+            "supplier_name": "Admixer",
+            "supplier_id": "admixer",
+            "sellers_json_url": "https://admixer.net/sellers.json"
+        },
+        {
+            "supplier_name": "Adyoulike",
+            "supplier_id": "adyoulike",
+            "sellers_json_url": "https://www.adyoulike.com/sellers.json"
+        },
+        {
+            "supplier_name": "TrustX",
+            "supplier_id": "trustx",
+            "sellers_json_url": "https://trustx.org/sellers.json"
+        },
+        {
+            "supplier_name": "Adman",
+            "supplier_id": "adman",
+            "sellers_json_url": "http://admanmedia.com/sellers.json"
+        },
+        {
+            "supplier_name": "AJA/Ameba",
+            "supplier_id": "ameba",
+            "sellers_json_url": "https://as.amanad.adtdp.com/sellers.json"
+        },
+        {
+            "supplier_name": "Admatic",
+            "supplier_id": "admatic",
+            "sellers_json_url": "https://admatic.com.tr/sellers.json"
+        },
+        {
+            "supplier_name": "Yieldmo",
+            "supplier_id": "yieldmo",
+            "sellers_json_url": "https://www.yieldmo.com/sellers.json"
+        },
+        {
+            "supplier_name": "Nativo",
+            "supplier_id": "nativo",
+            "sellers_json_url": "https://iab.nativo.com/sellers.json"
+        },
+        {
+            "supplier_name": "ConnectAd",
+            "supplier_id": "rtaplus",
+            "sellers_json_url": "http://connectad.io/sellers.json"
+        },
+        {
+            "supplier_name": "DistrictM",
+            "supplier_id": "districtm",
+            "sellers_json_url": ""
+        },
+        {
+            "supplier_name": "ironSource",
+            "supplier_id": "ironsrc",
+            "sellers_json_url": "https://ironsrc.com/sellers.json"
+        },
+        {
+            "supplier_name": "Admix",
+            "supplier_id": "advir",
+            "sellers_json_url": ""
+        },
+        {
+            "supplier_name": "POKKT",
+            "supplier_id": "pokkt",
+            "sellers_json_url": "http://pokkt.com/sellers.json"
+        },
+        {
+            "supplier_name": "33Across",
+            "supplier_id": "the33across",
+            "sellers_json_url": "https://33across.com/sellers.json"
+        },
+        {
+            "supplier_name": "Revcontent",
+            "supplier_id": "revcontent",
+            "sellers_json_url": "https://www.revcontent.com/sellers.json"
+        },
+        {
+            "supplier_name": "YOC VIS.X",
+            "supplier_id": "yoc",
+            "sellers_json_url": "https://cdn.yoc.com/visx/sellers/sellers.json"
+        },
+        {
+            "supplier_name": "Siprocal",
+            "supplier_id": "genesis",
+            "sellers_json_url": "https://siprocalads.com/sellers.json"
+        },
+        {
+            "supplier_name": "Triton Digital",
+            "supplier_id": "triton",
+            "sellers_json_url": "https://yield-op-sellers.api.tritondigital.com/sellers.json"
+        },
+        {
+            "supplier_name": "LoopMe",
+            "supplier_id": "loopme",
+            "sellers_json_url": "https://loopme.com/sellers.json"
+        },
+        {
+            "supplier_name": "Primis",
+            "supplier_id": "sekindo",
+            "sellers_json_url": "https://www.primis.tech/sellers.json"
+        },
+        {
+            "supplier_name": "Ogury",
+            "supplier_id": "ogury",
+            "sellers_json_url": "https://www.ogury.com/sellers.json"
+        },
+        {
+            "supplier_name": "OneTag",
+            "supplier_id": "onetag",
+            "sellers_json_url": "https://www.onetag.com/sellers.json"
+        },
+        {
+            "supplier_name": "Media.net",
+            "supplier_id": "medianet",
+            "sellers_json_url": "https://www.media.net/sellers.json"
+        },
+        {
+            "supplier_name": "Bidstack",
+            "supplier_id": "bidstack",
+            "sellers_json_url": ""
+        },
+        {
+            "supplier_name": "Taboola",
+            "supplier_id": "taboola",
+            "sellers_json_url": "https://www.taboola.com/sellers.json"
+        },
+        {
+            "supplier_name": "Seedtag",
+            "supplier_id": "seedtag",
+            "sellers_json_url": "https://www.seedtag.com/sellers.json"
+        },
+        {
+            "supplier_name": "Outbrain",
+            "supplier_id": "outbrain",
+            "sellers_json_url": "https://www.outbrain.com/sellers.json"
+        },
+        {
+            "supplier_name": "Unity",
+            "supplier_id": "unity",
+            "sellers_json_url": "http://unity.com/sellers.json"
+        },
+        {
+            "supplier_name": "Criteo - Commerce Grid",
+            "supplier_id": "themediagrid",
+            "sellers_json_url": "https://www.themediagrid.com/sellers.json"
+        },
+        {
+            "supplier_name": "Cadent, Aperture MX",
+            "supplier_id": "emxdigital",
+            "sellers_json_url": "https://emxdgt.com/sellers.json"
+        },
+        {
+            "supplier_name": "Index Exchange",
+            "supplier_id": "index",
+            "sellers_json_url": "https://cdn.indexexchange.com/sellers.json"
+        },
+        {
+            "supplier_name": "Anzu.io",
+            "supplier_id": "anzu",
+            "sellers_json_url": "http://anzu.io/sellers.json"
+        },
+        {
+            "supplier_name": "Vidoomy",
+            "supplier_id": "vidoomy",
+            "sellers_json_url": "https://vidoomy.com/sellers.json"
+        },
+        {
+            "supplier_name": "Lemma",
+            "supplier_id": "lemma",
+            "sellers_json_url": "https://lemmatechnologies.com/sellers.json"
+        },
+        {
+            "supplier_name": "BidMachine",
+            "supplier_id": "bidmachine",
+            "sellers_json_url": "https://bidmachine.io/sellers.json"
+        },
+        {
+            "supplier_name": "The Cool Company",
+            "supplier_id": "insticator",
+            "sellers_json_url": "https://ppa.insticator.com/v1/sellers.json"
+        },
+        {
+            "supplier_name": "Boldwin",
+            "supplier_id": "vixi",
+            "sellers_json_url": "http://bold-win.com/sellers.json"
+        },
+        {
+            "supplier_name": "EXTE",
+            "supplier_id": "richaudience",
+            "sellers_json_url": "https://richaudience.com/sellers.json"
+        },
+        {
+            "supplier_name": "Dax Audio",
+            "supplier_id": "daxaudio",
+            "sellers_json_url": "https://thisisdax.com/sellers.json"
+        },
+        {
+            "supplier_name": "Eskimi SSP",
+            "supplier_id": "eskimissp",
+            "sellers_json_url": "https://etr.eskimi.com/sellers.json"
+        },
+        {
+            "supplier_name": "Channels by EX.CO",
+            "supplier_id": "exco",
+            "sellers_json_url": "https://playbuzz.com/sellers.json"
+        },
+        {
+            "supplier_name": "Adprime",
+            "supplier_id": "adprime",
+            "sellers_json_url": "https://x.adprime.com/sellers.json"
+        },
+        {
+            "supplier_name": "Zeta SSP",
+            "supplier_id": "disqus",
+            "sellers_json_url": "http://zetaglobal.net/sellers.json"
+        },
+        {
+            "supplier_name": "MobileFuse",
+            "supplier_id": "mobilefuse",
+            "sellers_json_url": "http://mobilefuse.com/sellers.json"
+        },
+        {
+            "supplier_name": "Krush Media",
+            "supplier_id": "krushmedia",
+            "sellers_json_url": "https://krushmedia.com/sellers.json"
+        },
+        {
+            "supplier_name": "Concert",
+            "supplier_id": "concert",
+            "sellers_json_url": "https://concert.io/sellers.json"
+        },
+        {
+            "supplier_name": "AudienceRun",
+            "supplier_id": "audiencerun",
+            "sellers_json_url": "https://www.audiencerun.com/sellers.json"
+        },
+        {
+            "supplier_name": "Origin Media",
+            "supplier_id": "origin",
+            "sellers_json_url": ""
+        },
+        {
+            "supplier_name": "Bricks",
+            "supplier_id": "bricks",
+            "sellers_json_url": ""
+        },
+        {
+            "supplier_name": "MinuteMedia",
+            "supplier_id": "minutemedia",
+            "sellers_json_url": "https://www.minutemedia.com/sellers.json"
+        },
+        {
+            "supplier_name": "Luna Media",
+            "supplier_id": "lunamedia",
+            "sellers_json_url": "https://lunamedia.io/sellers.json"
+        },
+        {
+            "supplier_name": "Doceree",
+            "supplier_id": "doceree",
+            "sellers_json_url": ""
+        },
+        {
+            "supplier_name": "Chartboost",
+            "supplier_id": "chartboost",
+            "sellers_json_url": "https://a3.chartboost.com/sellers_json/sellers.json"
+        },
+        {
+            "supplier_name": "PilotX",
+            "supplier_id": "pilotx",
+            "sellers_json_url": "https://cdn.pilotx.tv/sellers.json"
+        },
+        {
+            "supplier_name": "Vidazoo",
+            "supplier_id": "vidazoo",
+            "sellers_json_url": "https://vidazoo.com/sellers.json"
+        },
+        {
+            "supplier_name": "MetaX Software",
+            "supplier_id": "metax",
+            "sellers_json_url": "https://metaxsoft.com/sellers.json"
+        },
+        {
+            "supplier_name": "Display.io",
+            "supplier_id": "displayio",
+            "sellers_json_url": "https://www.display.io/sellers.json"
+        },
+        {
+            "supplier_name": "E-planning",
+            "supplier_id": "eplanning",
+            "sellers_json_url": "https://www.e-planning.net/sellers.json"
+        },
+        {
+            "supplier_name": "zMaticoo SSP",
+            "supplier_id": "zmaticoo",
+            "sellers_json_url": "https://zmaticoo.com/sellers.json"
+        },
+        {
+            "supplier_name": "Ozone",
+            "supplier_id": "ozone",
+            "sellers_json_url": "https://prebid.the-ozone-project.com/sellers.json"
+        },
+        {
+            "supplier_name": "JWX",
+            "supplier_id": "connatix",
+            "sellers_json_url": "https://connatix.com/sellers.json"
+        },
+        {
+            "supplier_name": "Wirtualna Polska Media",
+            "supplier_id": "wpartner",
+            "sellers_json_url": "https://wp.pl/sellers.json"
+        },
+        {
+            "supplier_name": "BRAVE",
+            "supplier_id": "brave",
+            "sellers_json_url": "http://www.thebrave.io/sellers.json"
+        },
+        {
+            "supplier_name": "SE7EN",
+            "supplier_id": "videoheroes",
+            "sellers_json_url": "https://sellers.videoheroes.tv/sellersFiles/videoheroes.tv.json"
+        },
+        {
+            "supplier_name": "DXKulture",
+            "supplier_id": "dxkulture",
+            "sellers_json_url": "https://dxkulture.com/sellers.json"
+        },
+        {
+            "supplier_name": "Aireal",
+            "supplier_id": "aireal",
+            "sellers_json_url": "https://airealgroup.com/sellers.json"
+        },
+        {
+            "supplier_name": "Opera Ads",
+            "supplier_id": "operassp",
+            "sellers_json_url": "https://res.adx.opera.com/sellers.json"
+        },
+        {
+            "supplier_name": "LightAd",
+            "supplier_id": "lightad",
+            "sellers_json_url": "https://www.lightad.com/sellers.json"
+        },
+        {
+            "supplier_name": "NHN ACE",
+            "supplier_id": "nhnace",
+            "sellers_json_url": "https://nhnace.com/sellers.json"
+        },
+        {
+            "supplier_name": "Altavara",
+            "supplier_id": "altavara",
+            "sellers_json_url": "https://cdn.altavara.co/sellers.json"
+        },
+        {
+            "supplier_name": "Alkimi",
+            "supplier_id": "alkimi",
+            "sellers_json_url": "https://www.alkimi.org/sellers.json"
+        },
+        {
+            "supplier_name": "Playdigo",
+            "supplier_id": "playdigo",
+            "sellers_json_url": "https://playdigo.com/sellers.json"
+        },
+        {
+            "supplier_name": "Curation Media",
+            "supplier_id": "durationmedia",
+            "sellers_json_url": "http://durationmedia.net/sellers.json"
+        },
+        {
+            "supplier_name": "Start.io",
+            "supplier_id": "startio",
+            "sellers_json_url": "https://www.start.io/sellers.json"
+        },
+        {
+            "supplier_name": "AdTe",
+            "supplier_id": "adte",
+            "sellers_json_url": "https://www.themediasense.com/sellers.json"
+        },
+        {
+            "supplier_name": "Tyroo",
+            "supplier_id": "tyroo",
+            "sellers_json_url": "https://tyroo.com/sellers.json"
+        },
+        {
+            "supplier_name": "IQzone",
+            "supplier_id": "iqzone",
+            "sellers_json_url": "https://iqzone.com/sellers.json"
+        },
+        {
+            "supplier_name": "Infolinks Media",
+            "supplier_id": "infolinks",
+            "sellers_json_url": "http://infolinks.com/sellers.json"
+        },
+        {
+            "supplier_name": "Smile Wanted",
+            "supplier_id": "smilewanted",
+            "sellers_json_url": "https://smilewanted.com/sellers.json"
+        },
+        {
+            "supplier_name": "Kontext",
+            "supplier_id": "kontext",
+            "sellers_json_url": "https://www.kontext.so/sellers.json"
+        },
+        {
+            "supplier_name": "Smoot",
+            "supplier_id": "smoot",
+            "sellers_json_url": "http://smoot.ai/sellers.json"
+        },
+        {
+            "supplier_name": "BidLine",
+            "supplier_id": "bidline",
+            "sellers_json_url": "http://bidline.net/sellers.json"
+        },
+        {
+            "supplier_name": "SoundStack",
+            "supplier_id": "soundstack",
+            "sellers_json_url": "https://marketops.soundstack.com/sellers.json"
+        },
+        {
+            "supplier_name": "TrustedStack",
+            "supplier_id": "tstack",
+            "sellers_json_url": "https://trustedstack.com/sellers.json"
+        },
+        {
+            "supplier_name": "Thunder Monetize",
+            "supplier_id": "thundermonetize",
+            "sellers_json_url": "http://thunder-monetize.com/sellers.json"
+        },
+        {
+            "supplier_name": "Adgentek",
+            "supplier_id": "adgentek",
+            "sellers_json_url": "https://api.adgentek.ai/functions/v1/sellers-json"
+        },
+        {
+            "supplier_name": "Appstock",
+            "supplier_id": "appstock",
+            "sellers_json_url": "https://app-stock.com/sellers.json"
+        },
+        {
+            "supplier_name": "Adspin AdX (SpinX)",
+            "supplier_id": "spinx",
+            "sellers_json_url": "https://spinx.biz/sellers.json"
+        },
+        {
+            "supplier_name": "Azberry",
+            "supplier_id": "azberry",
+            "sellers_json_url": "https://azberry.com/sellers.json"
+        },
+        {
+            "supplier_name": "Publica by IAS",
+            "supplier_id": "publica",
+            "sellers_json_url": "https://cdn.getpublica.com/sellers.json"
+        }
+    ]
+}

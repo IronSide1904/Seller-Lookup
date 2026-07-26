@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 import pandas as pd
 import requests
@@ -14,6 +15,7 @@ LOOKUP_FILE = DASHBOARD_DIR / "seller_lookup_dashboard.csv"
 NAME_SUMMARY_FILE = DASHBOARD_DIR / "seller_name_summary.csv"
 ID_SUMMARY_FILE = DASHBOARD_DIR / "seller_id_summary.csv"
 HEALTH_FILE = DASHBOARD_DIR / "seller_json_fetch_status.csv"
+BSW_SUPPLIERINFO_FILE = DASHBOARD_DIR / "bsw_supplierinfo.json"
 
 LOOKUP_COLUMNS = [
     "source_name",
@@ -38,6 +40,7 @@ HEALTH_COLUMNS = [
 
 REQUEST_TIMEOUT_SECONDS = 45
 USER_AGENT = "Seller-Lookup-Dashboard-Updater/1.0"
+LOCAL_SOURCE_PREFIX = "local:"
 
 
 def clean_text(value: Any) -> str:
@@ -82,6 +85,7 @@ def load_sources() -> pd.DataFrame:
     health = pd.read_csv(HEALTH_FILE, dtype=str, encoding="utf-8-sig").fillna("")
     sources = health[["source_name", "sellers_json_url"]].drop_duplicates()
     sources = sources[sources["sellers_json_url"].map(clean_text).ne("")]
+    sources = sources[~sources["sellers_json_url"].str.startswith(LOCAL_SOURCE_PREFIX, na=False)]
     return sources.reset_index(drop=True)
 
 
@@ -159,6 +163,66 @@ def fetch_sellers_json(source_name: str, url: str, domain_ivt: dict[str, str]) -
     return rows, health
 
 
+def seller_domain_from_url(url: str) -> str:
+    text = clean_text(url)
+    if not text:
+        return ""
+    parsed = urlsplit(text)
+    return parsed.netloc.lower().removeprefix("www.")
+
+
+def load_bsw_supplierinfo(domain_ivt: dict[str, str]) -> tuple[list[dict[str, str]], dict[str, str]]:
+    source_name = "BSW"
+    source_url = f"{LOCAL_SOURCE_PREFIX}{BSW_SUPPLIERINFO_FILE.name}"
+    health = {
+        "source_name": source_name,
+        "sellers_json_url": source_url,
+        "http_status": "local",
+        "fetch_success": "False",
+        "parsed_success": "False",
+        "records_parsed": "0",
+        "error_message": "",
+    }
+    rows: list[dict[str, str]] = []
+
+    if not BSW_SUPPLIERINFO_FILE.exists():
+        health["error_message"] = f"Missing {BSW_SUPPLIERINFO_FILE.name}"
+        return rows, health
+
+    try:
+        data = json.loads(BSW_SUPPLIERINFO_FILE.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError) as exc:
+        health["error_message"] = str(exc)
+        return rows, health
+
+    suppliers = data.get("suppliers") if isinstance(data, dict) else None
+    if not isinstance(suppliers, list):
+        health["error_message"] = "Missing or invalid `suppliers` array"
+        return rows, health
+
+    for supplier in suppliers:
+        if not isinstance(supplier, dict):
+            continue
+        seller_domain = seller_domain_from_url(clean_text(supplier.get("sellers_json_url")))
+        rows.append(
+            {
+                "source_name": source_name,
+                "sellers_json_url": source_url,
+                "seller_name": clean_text(supplier.get("supplier_name")),
+                "seller_id": clean_text(supplier.get("supplier_id")),
+                "seller_domain": seller_domain,
+                "seller_type": "SUPPLIER",
+                "raw_record": json.dumps(supplier, ensure_ascii=False, sort_keys=True),
+                "seller_domain_ivt_pct": domain_ivt.get(seller_domain.lower(), ""),
+            }
+        )
+
+    health["fetch_success"] = "True"
+    health["parsed_success"] = "True"
+    health["records_parsed"] = str(len(rows))
+    return rows, health
+
+
 def rebuild_name_summary(lookup: pd.DataFrame) -> pd.DataFrame:
     base = lookup[lookup["seller_name"].map(clean_text).ne("")].copy()
     source_counts = base.groupby("seller_name")["sellers_json_url"].nunique()
@@ -224,6 +288,14 @@ def main() -> None:
             f"{health['source_name']}: fetched={health['fetch_success']} "
             f"parsed={health['parsed_success']} records={health['records_parsed']} url={health['sellers_json_url']}"
         )
+
+    bsw_rows, bsw_health = load_bsw_supplierinfo(domain_ivt)
+    lookup_rows.extend(bsw_rows)
+    health_rows.append(bsw_health)
+    print(
+        f"{bsw_health['source_name']}: fetched={bsw_health['fetch_success']} "
+        f"parsed={bsw_health['parsed_success']} records={bsw_health['records_parsed']} url={bsw_health['sellers_json_url']}"
+    )
 
     lookup = pd.DataFrame(lookup_rows, columns=LOOKUP_COLUMNS)
     health = pd.DataFrame(health_rows, columns=HEALTH_COLUMNS)
