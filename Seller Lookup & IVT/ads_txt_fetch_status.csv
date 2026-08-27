@@ -1,0 +1,61 @@
+﻿publisher_name,ads_txt_url,http_status,fetch_success,parsed_success,rows_parsed,error_message,last_scanned_at
+fuse.tv,https://fuse.tv/app-ads.txt,200,True,True,885,,2026-08-27T10:16:10+00:00
+dudeperfect.com,https://dudeperfect.com/ads.txt,200,True,True,526,,2026-08-27T10:16:10+00:00
+filmzie.com,https://filmzie.com/app-ads.txt,200,True,True,1702,,2026-08-27T10:16:10+00:00
+ifood.tv,https://ifood.tv/app-ads.txt,404,False,False,0,HTTP 404,2026-08-27T10:16:10+00:00
+directv.com,https://directv.com/app-ads.txt,200,True,True,1109,,2026-08-27T10:16:10+00:00
+filmrise.com,https://filmrise.com/app-ads.txt,200,True,True,1490,,2026-08-27T10:16:10+00:00
+fubo.tv,https://fubo.tv/app-ads.txt,200,True,True,1,,2026-08-27T10:16:10+00:00
+futuretodayinc.com,https://futuretodayinc.com/app-ads.txt,200,True,True,1490,,2026-08-27T10:16:10+00:00
+fawesome.tv,https://fawesome.tv/app-ads.txt,200,True,True,1490,,2026-08-27T10:16:10+00:00
+s.cdntek.com,https://s.cdntek.com/samsung/ads.txt,200,True,True,555,,2026-08-27T10:16:12+00:00
+popcornflix.com,https://popcornflix.com/app-ads.txt,200,True,True,1490,,2026-08-27T10:16:11+00:00
+play.works,https://play.works/app-ads.txt,200,True,True,2355,,2026-08-27T10:16:11+00:00
+watchfreeflix.com,https://watchfreeflix.com/app-ads.txt,200,True,True,1490,,2026-08-27T10:16:11+00:00
+videoelephant.tv,https://videoelephant.tv/app-ads.txt,200,True,True,444,,2026-08-27T10:16:11+00:00
+sportxads.com,https://sportxads.com/app-ads.txt,200,True,True,2158,,2026-08-27T10:16:11+00:00
+tv.univision.com,https://tv.univision.com/app-ads.txt,200,True,True,471,,2026-08-27T10:16:12+00:00
+rumble.com,https://rumble.com/app-ads.txt,200,True,True,67,,2026-08-27T10:16:12+00:00
+victoryplus.com,https://victoryplus.com/app-ads.txt,200,True,True,900,,2026-08-27T10:16:12+00:00
+spanglishmovies.com,https://spanglishmovies.com/app-ads.txt,200,True,True,393,,2026-08-27T10:16:12+00:00
+vizio.com,https://vizio.com/app-ads.txt,200,True,True,1240,,2026-08-27T10:16:12+00:00
+tubitv.com,https://tubitv.com/ads.txt,200,True,False,0,No parseable Ads.txt rows,2026-08-27T10:16:12+00:00
+tcl.com,https://tcl.com/ads.txt,200,True,True,806,,2026-08-27T10:16:12+00:00
+kidoodle.tv,https://kidoodle.tv/ads.txt,200,True,True,777,,2026-08-27T10:16:12+00:00
+its-newid.com,https://www.its-newid.com/ads.txt,200,True,True,1874,,2026-08-27T10:16:13+00:00
+cineverse.com,https://cineverse.com/app-ads.txt,200,True,True,476,,2026-08-27T10:16:10+00:00
+livescore.com,https://www.livescore.com/app-ads.txt,200,True,True,2276,,2026-08-27T10:16:13+00:00
+lgads.tv,https://lgads.tv/app-ads.txt,200,True,True,916,,2026-08-27T10:16:12+00:00
+xumo.com,https://xumo.com/app-ads.txt,200,True,True,723,,2026-08-27T10:16:12+00:00
+global.e.mi.com,https://global.e.mi.com/app-ads.txt,200,True,True,7523,,2026-08-27T10:16:12+00:00
+zeam.com,https://zeam.com/app-ads.txt,200,True,True,1512,,2026-08-27T10:16:12+00:00
+res.adx.opera.com,https://res.adx.opera.com/app-ads.txt,200,True,True,3023,,2026-08-27T10:16:13+00:00
+paramount.com,https://paramount.com/app-ads.txt,200,True,True,673,,2026-08-27T10:16:13+00:00
+newson.us,https://newson.us/app-ads.txt,200,True,True,2036,,2026-08-27T10:16:12+00:00
+soundcloud.com,https://soundcloud.com/ads.txt,200,True,True,1420,,2026-08-27T10:16:13+00:00
+hungrystudio.com,https://www.hungrystudio.com/app-ads.txt,200,True,True,15072,,2026-08-27T10:16:13+00:00
+ludotalent.com,https://ludotalent.com/app-ads.txt,000,False,False,0,curl: (6) Could not resolve host: ludotalent.com,2026-08-27T10:16:14+00:00
+tiki.video,https://tiki.video/app-ads.txt,000,False,False,0,curl: (6) Could not resolve host: tiki.video,2026-08-27T10:16:14+00:00
+rumble.com,https://rumble.com/ads.txt,200,True,True,57,,2026-08-27T10:16:14+00:00
+adinfo.lgads.tv,https://adinfo.lgads.tv/ads.txt,200,True,True,916,,2026-08-27T10:16:15+00:00
+cdn.getpublica.com,https://cdn.getpublica.com/ads.txt,200,True,True,355,,2026-08-27T10:16:15+00:00
+res.adx.opera.com,https://res.adx.opera.com/ads.txt,200,True,True,3354,,2026-08-27T10:16:14+00:00
+localnow.com,https://localnow.com/app-ads.txt,200,True,True,6,,2026-08-27T10:16:15+00:00
+distro.tv,https://distro.tv/app-ads.txt,200,True,True,227,,2026-08-27T10:16:15+00:00
+fubo.tv,https://fubo.tv/ads.txt,200,True,True,1,,2026-08-27T10:16:15+00:00
+imo.im,https://imo.im/app-ads.txt,200,True,True,4763,,2026-08-27T10:16:14+00:00
+paramount.com,https://www.paramount.com/app-ads.txt,200,True,True,673,,2026-08-27T10:16:16+00:00
+zeam.com,https://zeam.com/ads.txt,200,True,True,1512,,2026-08-27T10:16:14+00:00
+directv.com,https://www.directv.com/app-ads.txt,200,True,True,1109,,2026-08-27T10:16:16+00:00
+likee.video,https://likee.video/app-ads.txt,200,True,True,4250,,2026-08-27T10:16:14+00:00
+freetv.com,https://www.freetv.com/app-ads.txt,200,True,True,578,,2026-08-27T10:16:16+00:00
+plex.tv,https://plex.tv/app-ads.txt,200,True,True,4080,,2026-08-27T10:16:15+00:00
+sling.com,https://www.sling.com/app-ads.txt,403,False,False,0,HTTP 403,2026-08-27T10:16:16+00:00
+samsung.com,https://www.samsung.com/app-ads.txt,200,True,True,333,,2026-08-27T10:16:16+00:00
+tablotv.com,https://www.tablotv.com/app-ads.txt,200,True,True,1397,,2026-08-27T10:16:16+00:00
+tcl.com,https://www.tcl.com/app-ads.txt,200,True,True,806,,2026-08-27T10:16:16+00:00
+philo.com,https://www.philo.com/ads.txt,200,True,True,281,,2026-08-27T10:16:16+00:00
+stremium.com,https://www.stremium.com/app-ads.txt,200,True,True,104,,2026-08-27T10:16:16+00:00
+cineverse.com,https://cineverse.com/ads.txt,200,True,True,476,,2026-08-27T10:16:15+00:00
+pocketfm.com,https://pocketfm.com/ADS.TXT,200,True,False,0,No parseable Ads.txt rows,2026-08-27T10:16:13+00:00
+talkatone.com,https://www.talkatone.com/app-ads.txt,302,False,False,0,curl: (28) Operation timed out after 12015 milliseconds with 0 bytes received,2026-08-27T10:16:13+00:00

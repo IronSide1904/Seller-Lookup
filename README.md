@@ -1,13 +1,28 @@
-# Seller Lookup
+# Seller Lookup + Ads.txt Line QA
 
-Simple Streamlit search dashboard for existing sellers.json records.
+Streamlit dashboard for sellers.json lookup and Ads.txt line QA.
 
-The dashboard is focused on one workflow:
+The dashboard is intentionally simple and focused on search:
 
-1. Paste seller IDs, seller domains, seller names, source names, or sellers.json URLs.
-2. Choose a search mode when needed.
-3. Review matching seller records.
-4. Download the filtered CSV results.
+1. Search exact seller IDs, seller names, seller domains, source names, sellers.json URLs, Ads.txt URLs, or Ads.txt line text.
+2. Review matching sellers and Ads.txt QA records.
+3. Export the filtered results as CSV.
+
+The app does not fetch live sellers.json or Ads.txt files during page load. Streamlit reads prebuilt CSV files from this repository so the deployed dashboard stays fast and predictable.
+
+## Dashboard Tabs
+
+The app has exactly three tabs:
+
+1. `Search`
+2. `Ads.txt Line QA`
+3. `Health / Export`
+
+Removed UI:
+
+- IVT / Media-Guard tabs and IVT metrics
+- quick-search buttons and shortcut buttons
+- advanced seller-column dropdown table
 
 ## Run
 
@@ -24,7 +39,7 @@ Open:
 http://localhost:8501
 ```
 
-The root `app.py` launches `Seller Lookup & IVT/app.py` so Streamlit Community Cloud can use a simple entrypoint path.
+The root `app.py` launches `Seller Lookup & IVT/app.py`, which keeps Streamlit Community Cloud deployment simple.
 
 ## Streamlit Community Cloud
 
@@ -42,134 +57,101 @@ Live app:
 https://sellerlookup.streamlit.app/
 ```
 
-Streamlit Community Cloud can hibernate inactive apps. This repository includes a keep-awake workflow, but Streamlit availability can still depend on Streamlit Cloud status, GitHub availability, and account/app limits.
+Streamlit Community Cloud may hibernate inactive apps. This repository includes a weekly data-refresh workflow and can also be monitored externally if always-on availability is required.
 
-## Search Examples
+## Search
 
-Single seller ID:
+Search supports:
 
-```text
-34167
-```
+- exact seller IDs
+- seller names
+- seller domains
+- source names
+- sellers.json URLs
+- Ads.txt URLs
+- Ads.txt line text
 
-Multiple seller IDs:
+Seller ID matching is exact. For example, searching `5093` matches seller ID `5093`, but does not match `3320-50938`.
 
-```text
-34167, 34197, 34114
-```
+Multiple terms can be pasted with commas, spaces, tabs, or new lines.
 
-Excel paste:
-
-```text
-34167	34197	34114
-```
-
-Domain search:
+Example:
 
 ```text
-zmaticoo.com
+1100057305, 159942, 5093, 557914189
 ```
 
-Source search:
+## Ads.txt Line QA
+
+The Ads.txt QA pipeline reads:
 
 ```text
-lkqd
+Seller Lookup & IVT/Ads-txt and lines.xlsx
 ```
 
-Seller name search:
+Workbook sheets used:
 
-```text
-Lacuna
+- `Publisher Ads.txt`
+- `Publishers Seller ID Tracker`
+- `SSP Seller ID Tracker`
+- `Supply Line`
+- `Priority`
+
+Generated CSV outputs:
+
+- `Seller Lookup & IVT/required_lines.csv`
+- `Seller Lookup & IVT/ads_txt_sources.csv`
+- `Seller Lookup & IVT/parsed_ads_txt_rows.csv`
+- `Seller Lookup & IVT/ads_txt_line_qa.csv`
+- `Seller Lookup & IVT/missing_lines_action_list.csv`
+- `Seller Lookup & IVT/ads_txt_fetch_status.csv`
+
+Rebuild command:
+
+```powershell
+python scripts/build_ads_txt_qa.py
 ```
 
-## Search Modes
+Optional custom paths:
 
-`Auto` searches across seller ID, seller name, seller domain, source name, and sellers.json URL.
-
-`Seller ID` mode uses exact seller ID matching after trimming spaces. This is the best mode when pasting a column or row of seller IDs from Excel.
-
-The other modes search one field with case-insensitive contains matching:
-
-- `Seller Name`
-- `Seller Domain`
-- `Source Name`
-- `Sellers.json URL`
-
-Pasted terms can be separated by commas, spaces, new lines, tabs, semicolons, or pipes. Duplicate terms are removed while preserving order.
-
-## Filters And Downloads
-
-The sidebar keeps only simple lookup filters:
-
-- Source name
-- Seller type
-- Seller domain contains
-- Seller name contains
-- Seller ID exact match
-
-The Search tab includes:
-
-- Matching seller records
-- Match reason and matched terms
-- Grouped summary by seller ID
-- Grouped summary by seller domain
-- CSV downloads for all filtered outputs
-
-The Source Health tab reads `seller_json_fetch_status.csv`, shows source status KPIs, supports simple status filters, and downloads the filtered health table.
-
-The Data Export tab lists available dashboard CSV files, shows row and column counts, and provides direct CSV download buttons.
-
-## Data Files
-
-Required:
-
-```text
-Seller Lookup & IVT/seller_lookup_dashboard.csv
-Seller Lookup & IVT/seller_json_fetch_status.csv
+```powershell
+python scripts/build_ads_txt_qa.py --workbook "C:\path\to\Ads-txt and lines.xlsx" --output-dir "Seller Lookup & IVT"
 ```
 
-Optional export files:
+## QA Logic
 
-```text
-Seller Lookup & IVT/seller_name_summary.csv
-Seller Lookup & IVT/seller_id_summary.csv
-Seller Lookup & IVT/bsw_supplierinfo.json
+Line families:
+
+- `Dauup Authorization`
+- `Partner Demand Enablement`
+- `TBD`
+
+Statuses:
+
+- `Found`
+- `Missing`
+- `Partial`
+- `Failed`
+- `TBD`
+
+Match levels:
+
+- `Exact`
+- `Partial`
+- `Missing`
+- `Fetch Failed`
+- `TBD`
+
+Publisher authorization rows are matched to relevant publisher Ads.txt URLs when the workbook name can be mapped to a domain. Partner demand enablement lines are checked across publisher Ads.txt URLs. SSP destination rows are checked against the sellers.json lookup table.
+
+## Data Refresh
+
+The weekly GitHub Actions workflow refreshes sellers.json data and pushes updated CSV files back to the repository. Streamlit redeploys automatically after GitHub receives the updated files.
+
+Ads.txt QA data is rebuilt with:
+
+```powershell
+python scripts/build_ads_txt_qa.py
 ```
 
-The dashboard reads existing CSV files only. It does not refetch sellers.json URLs from the UI.
-The BSW supplierinfo file is imported as a local `BSW` source during data rebuilds.
-
-## Weekly sellers.json Updates
-
-The repository includes a GitHub Actions workflow:
-
-```text
-.github/workflows/weekly-sellers-json-update.yml
-```
-
-It runs every Wednesday at `03:00 UTC`, refetches every source listed in:
-
-```text
-Seller Lookup & IVT/seller_json_fetch_status.csv
-```
-
-Then it rebuilds and commits:
-
-```text
-Seller Lookup & IVT/seller_lookup_dashboard.csv
-Seller Lookup & IVT/seller_json_fetch_status.csv
-Seller Lookup & IVT/seller_name_summary.csv
-Seller Lookup & IVT/seller_id_summary.csv
-```
-
-Because Streamlit Cloud deploys from `main`, every automatic commit should trigger a Streamlit redeploy for:
-
-```text
-https://sellerlookup.streamlit.app/
-```
-
-You can also trigger the update manually from GitHub:
-
-```text
-Actions -> Weekly sellers.json update -> Run workflow
-```
+Then commit and push the generated CSV files so Streamlit serves the updated dashboard.
