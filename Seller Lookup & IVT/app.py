@@ -473,7 +473,7 @@ def to_csv_download(df: pd.DataFrame) -> bytes:
 
 
 def download_csv(df: pd.DataFrame, filename: str, label: str) -> None:
-    st.download_button(label, to_csv_download(df), file_name=filename, mime="text/csv", use_container_width=True)
+    st.download_button(label, to_csv_download(df), file_name=filename, mime="text/csv", width="stretch")
 
 
 def render_seller_kpis(df: pd.DataFrame) -> None:
@@ -517,7 +517,7 @@ def render_search_tab(lookup: pd.DataFrame, ads_qa: pd.DataFrame) -> None:
     with st.expander("Parsed search terms", expanded=False):
         st.write(f"{len(terms):,} parsed terms")
         if terms:
-            st.dataframe(pd.DataFrame({"term": terms}), use_container_width=True, hide_index=True, height=220)
+            st.dataframe(pd.DataFrame({"term": terms}), width="stretch", hide_index=True, height=220)
         else:
             st.caption("No search terms entered.")
 
@@ -529,7 +529,7 @@ def render_search_tab(lookup: pd.DataFrame, ads_qa: pd.DataFrame) -> None:
     visible_columns = [column for column in SELLER_RESULT_COLUMNS if column in seller_results.columns]
     st.dataframe(
         seller_results[visible_columns],
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
         height=520,
         column_config={"sellers_json_url": st.column_config.LinkColumn("sellers.json URL")},
@@ -542,11 +542,11 @@ def render_search_tab(lookup: pd.DataFrame, ads_qa: pd.DataFrame) -> None:
     col_left, col_right = st.columns(2)
     with col_left:
         st.caption("Grouped by Seller ID")
-        st.dataframe(seller_id_summary, use_container_width=True, hide_index=True, height=320)
+        st.dataframe(seller_id_summary, width="stretch", hide_index=True, height=320)
         download_csv(seller_id_summary, "grouped_by_seller_id.csv", "Download grouped by seller ID as CSV")
     with col_right:
         st.caption("Grouped by Seller Domain")
-        st.dataframe(seller_domain_summary, use_container_width=True, hide_index=True, height=320)
+        st.dataframe(seller_domain_summary, width="stretch", hide_index=True, height=320)
         download_csv(seller_domain_summary, "grouped_by_seller_domain.csv", "Download grouped by seller domain as CSV")
 
     st.subheader("Matching Ads.txt Line QA")
@@ -556,7 +556,7 @@ def render_search_tab(lookup: pd.DataFrame, ads_qa: pd.DataFrame) -> None:
     qa_columns = [column for column in ADS_QA_DEFAULT_COLUMNS + ["match_reason", "matched_terms"] if column in ads_results.columns]
     st.dataframe(
         ads_results[qa_columns],
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
         height=420,
         column_config={"ads_txt_url": st.column_config.LinkColumn("Ads.txt URL")},
@@ -598,7 +598,7 @@ def render_ads_txt_qa_tab(ads_qa: pd.DataFrame) -> None:
     visible_columns = [column for column in ADS_QA_DEFAULT_COLUMNS if column in filtered.columns]
     st.dataframe(
         filtered[visible_columns],
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
         height=620,
         column_config={"ads_txt_url": st.column_config.LinkColumn("Ads.txt URL")},
@@ -608,7 +608,7 @@ def render_ads_txt_qa_tab(ads_qa: pd.DataFrame) -> None:
     advanced_columns = [column for column in filtered.columns if column not in visible_columns and not column.startswith("_")]
     if advanced_columns:
         with st.expander("Advanced QA columns", expanded=False):
-            st.dataframe(filtered[advanced_columns], use_container_width=True, hide_index=True, height=320)
+            st.dataframe(filtered[advanced_columns], width="stretch", hide_index=True, height=320)
 
     missing = load_optional_csv("missing_lines")
     parsed_ads = load_optional_csv("parsed_ads")
@@ -653,7 +653,7 @@ def render_seller_health_section(health: pd.DataFrame) -> None:
     columns = ["source_name", "sellers_json_url", "http_status", "fetch_success", "parsed_success", "records_parsed", "error_message"]
     if "last_scanned_at" in filtered.columns:
         columns.append("last_scanned_at")
-    st.dataframe(filtered[columns], use_container_width=True, hide_index=True, height=360)
+    st.dataframe(filtered[columns], width="stretch", hide_index=True, height=360)
     download_csv(filtered[columns], "filtered_seller_json_fetch_status.csv", "Download filtered Sellers.json Health")
 
 
@@ -678,7 +678,7 @@ def render_ads_health_section(ads_health: pd.DataFrame) -> None:
         "last_scanned_at",
     ]
     columns = [column for column in columns if column in ads_health.columns]
-    st.dataframe(ads_health[columns], use_container_width=True, hide_index=True, height=360)
+    st.dataframe(ads_health[columns], width="stretch", hide_index=True, height=360)
     download_csv(ads_health[columns], "ads_txt_fetch_status.csv", "Download Ads.txt Health")
 
 
@@ -708,14 +708,14 @@ def render_data_downloads() -> None:
         available.append((filename, df))
         summary_rows.append({"file name": filename, "row count": len(df), "column count": len(df.columns)})
 
-    st.dataframe(pd.DataFrame(summary_rows), use_container_width=True, hide_index=True)
+    st.dataframe(pd.DataFrame(summary_rows), width="stretch", hide_index=True)
     for filename, df in available:
         st.download_button(
             f"Download {filename}",
             to_csv_download(df),
             file_name=filename,
             mime="text/csv",
-            use_container_width=True,
+            width="stretch",
         )
 
 
